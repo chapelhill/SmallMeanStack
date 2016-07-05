@@ -4,8 +4,8 @@ var Schema      = mongoose.Schema;
 
 // Creates a User Schema. This will be the basis of how user data is stored in the db
 var UserSchema = new Schema({
-    firstname: {type: String, required: true},
-    lastname: {type: String, required: true},
+    firstName: {type: String, required: true},
+    lastName: {type: String, required: true},
    
     created_at: {type: Date, default: Date.now},
     updated_at: {type: Date, default: Date.now}
@@ -22,3 +22,4 @@ UserSchema.pre('save', function(next){
 });
 
 
+module.exports = mongoose.model('scotch-user', UserSchema);

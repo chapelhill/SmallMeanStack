@@ -1,9 +1,9 @@
 {
-    "name": "ErvinSimpleWebsite",
+    "name": "MeanMapsApp",
     "version": "1.0.0",
-    "description": "Demo MEAN Apps",
+    "description": "Demo app showing the use of Google Maps in MEAN Apps",
     "main": "server.js",
-    "author": "Ervin  Wu",
+    "author": "Ahmed Haque",
     "dependencies" : {
         "express"    : "~4.7.2",
         "mongoose"   : "~4.1.0",
