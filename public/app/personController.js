@@ -1,14 +1,9 @@
 var app = angular.module('myApp', []);
 app.controller('personCtrl',  function($scope, $http) {
 
-	  $scope.formData = {};
-
-
-    $scope.formData.firstName = "John";
-    $scope.formData.lastName = "Doe";
-  
-
-
+   $scope.formData = {};
+   $scope.formData.firstName = "John";
+   $scope.formData.lastName = "Doe";
    $scope.addContact =function(){
             $http.post('/users', $scope.formData).success(function (data) {
             	console.log(data);
