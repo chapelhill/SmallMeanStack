@@ -1,32 +1,36 @@
 // Dependencies
 // -----------------------------------------------------
-var express         = require('express');
-var mongoose        = require('mongoose');
-var port            = process.env.PORT || 3000;
-var morgan          = require('morgan');
-var bodyParser      = require('body-parser');
-var methodOverride  = require('method-override');
-var app             = express();
-
-// Express Configuration
-// -----------------------------------------------------
-// Sets the connection to MongoDB
-mongoose.connect("mongodb://localhost/SmallMeanStack");
-
-// Logging and Parsing
-app.use(express.static(__dirname + '/public'));                 // sets the static files location to public
-app.use('/bower_components',  express.static(__dirname + '/bower_components')); // Use BowerComponents
-app.use(morgan('dev'));                                         // log with Morgan
-app.use(bodyParser.json());                                     // parse application/json
-app.use(bodyParser.urlencoded({extended: true}));               // parse application/x-www-form-urlencoded
-app.use(bodyParser.text());                                     // allows bodyParser to look at raw text
-app.use(bodyParser.json({ type: 'application/vnd.api+json'}));  // parse application/vnd.api+json as json
-app.use(methodOverride());
+var express = require('express');
+var app = express();
+var mongojs = require('mongojs');
+var db = mongojs('user', ['user']);
+var bodyParser = require('body-parser');
+var port= 3000;
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json());
 
 // Routes
 // ------------------------------------------------------
+<<<<<<< HEAD
    require('./app/routes.js')(app);
+=======
+app.get('/user', function (req, res) {
+  console.log('I received a GET request');
 
+  db.user.find(function (err, docs) {
+    console.log(docs);
+    res.json(docs);
+  });
+});
+
+app.post('/user', function (req, res) {
+  console.log(req.body);
+  db.user.insert(req.body, function(err, doc) {
+>>>>>>> origin/master
+
+    res.json(doc);
+  });
+});
 // Listen
 // -------------------------------------------------------
 app.listen(port);
